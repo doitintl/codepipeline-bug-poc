@@ -53,7 +53,7 @@ Steps
   BuildProjSingle1 - with a single stage build file (https://github.com/doitintl/aws-codebuild-sample/blob/main/buildspec_single.yml) 
   BuildProjBatch1 - with a batch build file (https://github.com/doitintl/aws-codebuild-sample/blob/main/buildspec_batch.yml) 
 
-  Both of them export an enviroment variable EXPORT_VAR1, meant to be used in preceding stages
+  Both of them export an enviroment variable EXPORT_VAR1, meant to be used in subsequent stages
 
   CodePipeline is created with BuildProjSingle1 as the Build stage and a dummy deploy stage, which just outputs the environment variable.
 
