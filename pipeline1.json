@@ -1,0 +1,116 @@
+{
+    "pipeline": {
+        "name": "pipleline-test2",
+        "roleArn": "arn:aws:iam::111111:role/CodePipelineServiceRole",
+        "artifactStore": {
+            "type": "S3",
+            "location": "codepipeline-us-west-2-111111"
+        },
+        "stages": [
+            {
+                "name": "Source",
+                "actions": [
+                    {
+                        "name": "Source",
+                        "actionTypeId": {
+                            "category": "Source",
+                            "owner": "AWS",
+                            "provider": "CodeStarSourceConnection",
+                            "version": "1"
+                        },
+                        "runOrder": 1,
+                        "configuration": {
+                            "BranchName": "main",
+                            "ConnectionArn": "<CODE_CONNECTION_ARN>",
+                            "DetectChanges": "true",
+                            "FullRepositoryId": "doitintl/aws-codebuild-sample",
+                            "OutputArtifactFormat": "CODE_ZIP"
+                        },
+                        "outputArtifacts": [
+                            {
+                                "name": "SourceArtifact"
+                            }
+                        ],
+                        "inputArtifacts": [],
+                        "region": "us-west-2",
+                        "namespace": "SourceVariables"
+                    }
+                ],
+                "onFailure": {
+                    "result": "RETRY",
+                    "retryConfiguration": {
+                        "retryMode": "ALL_ACTIONS"
+                    }
+                }
+            },
+            {
+                "name": "Build",
+                "actions": [
+                    {
+                        "name": "Build",
+                        "actionTypeId": {
+                            "category": "Build",
+                            "owner": "AWS",
+                            "provider": "CodeBuild",
+                            "version": "1"
+                        },
+                        "runOrder": 1,
+                        "configuration": {
+                            "BatchEnabled": "false",
+                            "ProjectName": "BuildProjSingle1"
+                        },
+                        "outputArtifacts": [],
+                        "inputArtifacts": [
+                            {
+                                "name": "SourceArtifact"
+                            }
+                        ],
+                        "region": "us-west-2",
+                        "namespace": "CustomVariables"
+                    }
+                ],
+                "onFailure": {
+                    "result": "RETRY",
+                    "retryConfiguration": {
+                        "retryMode": "ALL_ACTIONS"
+                    }
+                }
+            },
+            {
+                "name": "Deploy",
+                "actions": [
+                    {
+                        "name": "Deploy",
+                        "actionTypeId": {
+                            "category": "Build",
+                            "owner": "AWS",
+                            "provider": "CodeBuild",
+                            "version": "1"
+                        },
+                        "runOrder": 1,
+                        "configuration": {
+                            "EnvironmentVariables": "[{\"name\":\"DISPLAY_VAR\",\"value\":\"#{CustomVariables.EXPORT_VAR1}\",\"type\":\"PLAINTEXT\"}]",
+                            "ProjectName": "DeployProj"
+                        },
+                        "outputArtifacts": [],
+                        "inputArtifacts": [
+                            {
+                                "name": "SourceArtifact"
+                            }
+                        ],
+                        "region": "us-west-2"
+                    }
+                ],
+                "onFailure": {
+                    "result": "ROLLBACK"
+                }
+            }
+        ],
+
+        "version": 12,
+        "executionMode": "QUEUED",
+        "pipelineType": "V2"
+       
+    }
+
+}

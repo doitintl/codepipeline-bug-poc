@@ -1,0 +1,63 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "SidLogGroup",
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:logs:us-west-2:111111:log-group:/aws/codebuild/*"
+            ],
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ]
+        },
+        {
+            "Sid": "SidCodeStarConnections",
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:codestar-connections:us-west-2:111111:connection*",
+                "arn:aws:codeconnections:us-west-2:111111:connection*"
+            ],
+            "Action": [
+                "codestar-connections:GetConnectionToken",
+                "codestar-connections:GetConnection",
+                "codeconnections:GetConnectionToken",
+                "codeconnections:GetConnection",
+                "codeconnections:UseConnection"
+            ]
+        }, 
+        {
+            "Sid": "SidReportGroup",
+            "Effect": "Allow",
+            "Action": [
+                "codebuild:CreateReportGroup",
+                "codebuild:CreateReport",
+                "codebuild:UpdateReport",
+                "codebuild:BatchPutTestCases",
+                "codebuild:BatchPutCodeCoverages"
+            ],
+            "Resource": [
+                "arn:aws:codebuild:us-west-2:111111:report-group/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:PutObjectVersionAcl",
+                "s3:GetBucketVersioning",
+                "s3:GetBucketAcl",
+                "s3:GetBucketLocation"
+            ],
+            "Resource": [
+                "arn:aws:s3:::codepipeline-us-west-2-111111",
+                "arn:aws:s3:::codepipeline-us-west-2-111111/*"
+            ]
+        }
+    ]
+}
+

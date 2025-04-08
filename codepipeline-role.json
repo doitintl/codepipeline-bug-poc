@@ -1,0 +1,59 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": "codebuild:*",
+            "Resource": "*"
+        },
+
+         {
+            "Sid": "SidCodeStarConnections",
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:codestar-connections:us-west-2:111111:connection*",
+                "arn:aws:codeconnections:us-west-2:111111:connection*"
+            ],
+            "Action": [
+                "codestar-connections:GetConnectionToken",
+                "codestar-connections:GetConnection",
+                "codestar-connections:UseConnection",
+                "codeconnections:GetConnectionToken",
+                "codeconnections:GetConnection",
+                "codeconnections:UseConnection"
+            ]
+        }, 
+
+         {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:us-east-1:111111:log-group:/aws/codepipeline/*"
+            ]
+        },
+
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:PutObjectVersionAcl",
+                "s3:GetBucketVersioning",
+                "s3:GetBucketAcl",
+                "s3:GetBucketLocation"
+            ],
+            "Resource": [
+                "arn:aws:s3:::codepipeline-us-west-2-111111",
+                "arn:aws:s3:::codepipeline-us-west-2-111111/*"
+            ]
+        }
+
+
+    ]
+}
