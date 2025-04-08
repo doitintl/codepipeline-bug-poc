@@ -1,10 +1,10 @@
 {
     "pipeline": {
-        "name": "pipleline-test2",
-        "roleArn": "arn:aws:iam::111111:role/CodePipelineServiceRole",
+        "name": "pipleline-test1",
+        "roleArn": "arn:aws:iam::605134454716:role/CodePipelineServiceRole",
         "artifactStore": {
             "type": "S3",
-            "location": "codepipeline-us-west-2-111111"
+            "location": "codepipeline-us-west-2-605134454716"
         },
         "stages": [
             {
@@ -21,7 +21,7 @@
                         "runOrder": 1,
                         "configuration": {
                             "BranchName": "main",
-                            "ConnectionArn": "<CODE_CONNECTION_ARN>",
+                            "ConnectionArn": "arn:aws:codeconnections:us-west-2:605134454716:connection/ff2197d3-60d4-4b4d-921f-34dcc99363fd",
                             "DetectChanges": "true",
                             "FullRepositoryId": "doitintl/aws-codebuild-sample",
                             "OutputArtifactFormat": "CODE_ZIP"

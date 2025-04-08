@@ -37,11 +37,13 @@ Steps
 
 7. `aws iam put-role-policy --role-name CodePipelineServiceRole --policy-name codepipelinerole  --policy-document file://codepipeline-role.json`
 
-8. `aws codebuild create-project --cli-input-json file://codedeployproj_single.json`
+8. `aws codebuild create-project --cli-input-json file://codebuildproj_single.json`
 
-9. `aws codebuild create-project --cli-input-json file://codedeployproj_batch.json`
+9. `aws codebuild create-project --cli-input-json file://codebuildproj_batch.json`
 
-10. `aws codepipeline  create-pipeline --pipeline pipleline-test1 --cli-input-json file://pipeline1.json`
+10. `aws codebuild create-project --cli-input-json file://codedeployproj.json`
+
+11. `aws codepipeline  create-pipeline  --cli-input-json file://pipeline1.json`
 
 
 ---

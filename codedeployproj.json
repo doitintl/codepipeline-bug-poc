@@ -18,7 +18,7 @@
         "computeType": "BUILD_GENERAL1_SMALL"
     },
 
-    "serviceRole": "arn:aws:iam::111111:role/CodeBuildServiceRole",
+    "serviceRole": "arn:aws:iam::605134454716:role/CodeBuildServiceRole",
 
     "logsConfig": {
         "cloudWatchLogs": {
