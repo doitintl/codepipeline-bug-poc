@@ -1,6 +1,6 @@
 
 
-#Steps to reproduce bug in Batch-mode export variables
+# Steps to reproduce bug in Batch-mode export variables
 
 ---
 
@@ -19,30 +19,29 @@ Preparation to run the scripts
 Steps
 
 
-1. aws codestar-connections create-connection --provider-type GitHub --connection-name github-connection
+1. `aws codestar-connections create-connection --provider-type GitHub --connection-name github-connection`
 
- Save the connection ARN in the output
+   Save the connection ARN in the output
 
 2. Replace the variable "<CODE_CONNECTION_ARN>" in codebuildproj_batch.json, codebuildproj_single.json and pipeline1.json with the ARN above
 
-
 3. Replace Aws Account Id in the command below and run it. 
 
-   aws s3 mb s3://codepipeline-us-west-2-<ACCOUNT_ID>
+   `aws s3 mb s3://codepipeline-us-west-2-<ACCOUNT_ID>`
 
-4. aws iam create-role --role-name CodeBuildServiceRole  --assume-role-policy-document file://codebuild-trust-policy.json
+4. `aws iam create-role --role-name CodeBuildServiceRole  --assume-role-policy-document file://codebuild-trust-policy.json`
 
-5. aws iam put-role-policy --role-name CodeBuildServiceRole --policy-name codebuildrole --policy-document file://codebuild-role.json
+5. `aws iam put-role-policy --role-name CodeBuildServiceRole --policy-name codebuildrole --policy-document file://codebuild-role.json`
 
-6. aws iam create-role --role-name CodePipelineServiceRole  --assume-role-policy-document file://codepipeline-trust-policy.json 
+6. `aws iam create-role --role-name CodePipelineServiceRole  --assume-role-policy-document file://codepipeline-trust-policy.json` 
 
-7. aws iam put-role-policy --role-name CodePipelineServiceRole --policy-name codepipelinerole  --policy-document file://codepipeline-role.json 
+7. `aws iam put-role-policy --role-name CodePipelineServiceRole --policy-name codepipelinerole  --policy-document file://codepipeline-role.json`
 
-8. aws codebuild create-project --cli-input-json file://codedeployproj_single.json
+8. `aws codebuild create-project --cli-input-json file://codedeployproj_single.json`
 
-9. aws codebuild create-project --cli-input-json file://codedeployproj_batch.json
+9. `aws codebuild create-project --cli-input-json file://codedeployproj_batch.json`
 
-10. aws codepipeline  create-pipeline --pipeline pipleline-test1 --cli-input-json file://pipeline1.json 
+10. `aws codepipeline  create-pipeline --pipeline pipleline-test1 --cli-input-json file://pipeline1.json`
 
 
 ---
