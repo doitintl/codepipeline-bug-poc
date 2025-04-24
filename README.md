@@ -62,7 +62,7 @@ Steps
   In the build-stage, this value of "EXPORT_VAR1" is set inside the code - https://github.com/doitintl/aws-codebuild-sample/blob/main/buildspec_single.yml
 
 
-  Now, edit the Codepipeline so that Build stage will point to BuildProjBatch1.
+  Now, edit the Codepipeline so that Build stage will point to BuildProjBatch1. Make sure you select the "Batch Build" for "Build Type" when you make this change.
 
   The pipeline will now fail with "An action in this pipeline failed because one or more variables could not be resolved: Action name=Deploy. This can result when a variable is referenced that does not exist. Validate the configuration for this action."
 
