@@ -29,6 +29,17 @@
             ]
         }, 
         {
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:codebuild:us-west-2:111111:project/*"
+            ],
+            "Action": [
+                "codebuild:StartBuild",
+                "codebuild:StopBuild",
+                "codebuild:RetryBuild"
+            ]
+        },
+        {
             "Sid": "SidReportGroup",
             "Effect": "Allow",
             "Action": [

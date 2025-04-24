@@ -28,5 +28,9 @@
             "status": "ENABLED",
             "groupName": "/aws/codebuild/BuildProjSingle1"
         }
-    }   
+    },
+
+    "buildBatchConfig": {
+        "serviceRole": "arn:aws:iam::111111:role/CodeBuildServiceRole"
+    }
 }
