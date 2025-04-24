@@ -12,8 +12,8 @@
             "Sid": "SidCodeStarConnections",
             "Effect": "Allow",
             "Resource": [
-                "arn:aws:codestar-connections:us-west-2:605134454716:connection*",
-                "arn:aws:codeconnections:us-west-2:605134454716:connection*"
+                "arn:aws:codestar-connections:us-west-2:111111:connection*",
+                "arn:aws:codeconnections:us-west-2:111111:connection*"
             ],
             "Action": [
                 "codestar-connections:GetConnectionToken",
@@ -33,7 +33,7 @@
                 "logs:PutLogEvents"
             ],
             "Resource": [
-                "arn:aws:logs:us-east-1:605134454716:log-group:/aws/codepipeline/*"
+                "arn:aws:logs:us-east-1:111111:log-group:/aws/codepipeline/*"
             ]
         },
 
@@ -49,8 +49,8 @@
                 "s3:GetBucketLocation"
             ],
             "Resource": [
-                "arn:aws:s3:::codepipeline-us-west-2-605134454716",
-                "arn:aws:s3:::codepipeline-us-west-2-605134454716/*"
+                "arn:aws:s3:::codepipeline-us-west-2-111111",
+                "arn:aws:s3:::codepipeline-us-west-2-111111/*"
             ]
         }
 
